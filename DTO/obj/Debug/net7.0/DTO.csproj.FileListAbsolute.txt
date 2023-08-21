@@ -1,0 +1,12 @@
+D:\Galaxy task\Galaxy Task\DTO\bin\Debug\net7.0\DTO.deps.json
+D:\Galaxy task\Galaxy Task\DTO\bin\Debug\net7.0\DTO.dll
+D:\Galaxy task\Galaxy Task\DTO\bin\Debug\net7.0\DTO.pdb
+D:\Galaxy task\Galaxy Task\DTO\obj\Debug\net7.0\DTO.csproj.AssemblyReference.cache
+D:\Galaxy task\Galaxy Task\DTO\obj\Debug\net7.0\DTO.GeneratedMSBuildEditorConfig.editorconfig
+D:\Galaxy task\Galaxy Task\DTO\obj\Debug\net7.0\DTO.AssemblyInfoInputs.cache
+D:\Galaxy task\Galaxy Task\DTO\obj\Debug\net7.0\DTO.AssemblyInfo.cs
+D:\Galaxy task\Galaxy Task\DTO\obj\Debug\net7.0\DTO.csproj.CoreCompileInputs.cache
+D:\Galaxy task\Galaxy Task\DTO\obj\Debug\net7.0\DTO.dll
+D:\Galaxy task\Galaxy Task\DTO\obj\Debug\net7.0\refint\DTO.dll
+D:\Galaxy task\Galaxy Task\DTO\obj\Debug\net7.0\DTO.pdb
+D:\Galaxy task\Galaxy Task\DTO\obj\Debug\net7.0\ref\DTO.dll
