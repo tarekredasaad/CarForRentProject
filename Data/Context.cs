@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Models;
+using WebApplication1.Models;
 using System.Data;
 using System.Reflection;
-using WebApplication1.Models;
 
 namespace WebApplication1.Data
 {
@@ -19,6 +18,7 @@ namespace WebApplication1.Data
         public DbSet<Brand> brands { get; set; }
         public DbSet<Car> cars { get; set; }
         public DbSet<Order> orders { get; set; }
+        public DbSet<OrderCar> orderCars { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -79,8 +79,8 @@ namespace WebApplication1.Data
                 // Add more Brand records here...
             });
 
-                    modelBuilder.Entity<Model>().HasData(new[]
-                    {
+                modelBuilder.Entity<Model>().HasData(new[]
+                {
                 new Model
                 {
                     Id = 1,
@@ -224,8 +224,8 @@ namespace WebApplication1.Data
                 // Add more Model records here...
             });
 
-                    modelBuilder.Entity<Car>().HasData(new[]
-                    {
+                modelBuilder.Entity<Car>().HasData(new[]
+                {
                 new Car
                 {
                     Id = 1,
@@ -296,6 +296,8 @@ namespace WebApplication1.Data
                     Power = 100,
                     Year = 2022
                 }
+                
+
              });
          }
 

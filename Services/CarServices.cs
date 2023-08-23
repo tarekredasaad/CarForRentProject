@@ -21,63 +21,27 @@ namespace Services
         {
             string model = "Model";
             string brand = "Brand";
-            IEnumerable<Car> cars;
+            IEnumerable<Car> cars =_CarRepository.GetAll()
+            .Include(c => c.Model).ThenInclude(m => m.Brand);
 
-            if(brandid != 0)
+            if (brandid != 0)
             {
-            cars = _CarRepository.GetAll()
-                .Include(c=> c.Model).ThenInclude(m=> m.Brand)
-                .Where(m => m.Model.BrandID == brandid).ToList();
-            }
-            else if (name != null)
-            {
-                 cars = _CarRepository.GetAll()
-                .Include(c=> c.Model).ThenInclude(m=> m.Brand).Where(m=>m.Model.Name == name).ToList();
-            }
-            else if (year != 0)
-            {
-
-                 cars = _CarRepository.GetAll(c=>c.Year == year)
-                .Include(c=> c.Model).ThenInclude(m=> m.Brand).ToList();
-
-            }else if(brandid != 0 && name != null)
-            {
-              cars = _CarRepository.GetAll()
-                .Include(c=> c.Model).ThenInclude(m=> m.Brand)
-                .Where(m=>m.Model.Name == name && m.Model.BrandID == brandid).ToList();
-            
-
-            }else if(brandid != 0 && year != 0)
-            {
-              cars = _CarRepository.GetAll(c => c.Year == year)
-                .Include(c=> c.Model).ThenInclude(m=> m.Brand)
-                .Where(m=> m.Model.BrandID == brandid).ToList();
-            
-
-            }else if(name != null && year != 0)
-            {
-              cars = _CarRepository.GetAll(c => c.Year == year)
-                .Include(c=> c.Model).ThenInclude(m=> m.Brand)
-                .Where(m=> m.Model.Name == name).ToList();
-            
-
-            }else if(name != null && year != 0 && name != null)
-            {
-              cars = _CarRepository.GetAll(c => c.Year == year)
-                .Include(c=> c.Model).ThenInclude(m=> m.Brand)
-                .Where(m=> m.Model.Name == name && m.Model.BrandID == brandid).ToList();
-            
-
-            }
-            else
-            {
-                 cars = _CarRepository.GetAll()
-                    .Include(c=> c.Model).ThenInclude(m=> m.Brand).ToList();          
-            
-
+                cars = cars.Where(m => m.Model.BrandID == brandid);
             }
 
-            return cars;
+            if (name != null)
+            {
+                cars = cars.Where(m => m.Model.Name == name);
+            }
+
+            if (year != 0)
+            {
+                cars = cars.Where(c => c.Year == year);
+            }
+
+            var filteredCars = cars.ToList();
+
+            return filteredCars;
         }
         //public async Task<dynamic> filter(int id) 
         //{

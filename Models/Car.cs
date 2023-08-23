@@ -9,6 +9,8 @@ namespace WebApplication1.Models
         public Model Model { get; set; }
         public decimal Power { get; set; }
         public int Year { get; set; }
+        public List<OrderCar> orderCars { get; set; }
+
     }
 }
 

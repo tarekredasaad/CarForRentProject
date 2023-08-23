@@ -4,7 +4,6 @@ using System.Diagnostics;
 using WebApplication1.Data.Repository;
 using WebApplication1.Models;
 using Services;
-using Models;
 using WebApplication1.Data;
 
 var builder = WebApplication.CreateBuilder(args);

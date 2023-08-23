@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using WebApplication1.Models;
 
-namespace Models
+namespace WebApplication1.Models
 {
-    public class OrderCar
+    public class OrderCar:Base
     {
-        [ForeignKey("Order")]
+        [ForeignKey("Orders")]
 
         public int OrderId { get; set; }
-        public Order Order { get; set; }
-        [ForeignKey("Car")]
+        public Order Orders { get; set; }
+        [ForeignKey("Cars")]
 
         public int CarId { get; set; }
-        public Car Car { get; set; }
+        public Car Cars { get; set; }
         public DateTime RentFrom { get; set; }
         public DateTime RentTo { get; set; }
         public int Quantity { get; set; }

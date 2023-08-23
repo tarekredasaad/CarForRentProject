@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -27,6 +28,24 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "orders",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CustomerName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CustomerNationality = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DrivingLicense = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AdvancedPayment = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TransactionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_orders", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "models",
                 columns: table => new
                 {
@@ -45,7 +64,7 @@ namespace Data.Migrations
                         column: x => x.BrandID,
                         principalTable: "brands",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -67,7 +86,37 @@ namespace Data.Migrations
                         column: x => x.ModelID,
                         principalTable: "models",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "orderCars",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OrderId = table.Column<int>(type: "int", nullable: false),
+                    CarId = table.Column<int>(type: "int", nullable: false),
+                    RentFrom = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    RentTo = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_orderCars", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_orderCars_cars_CarId",
+                        column: x => x.CarId,
+                        principalTable: "cars",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                    table.ForeignKey(
+                        name: "FK_orderCars_orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "orders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.InsertData(
@@ -140,13 +189,29 @@ namespace Data.Migrations
                 name: "IX_models_BrandID",
                 table: "models",
                 column: "BrandID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_orderCars_CarId",
+                table: "orderCars",
+                column: "CarId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_orderCars_OrderId",
+                table: "orderCars",
+                column: "OrderId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "orderCars");
+
+            migrationBuilder.DropTable(
                 name: "cars");
+
+            migrationBuilder.DropTable(
+                name: "orders");
 
             migrationBuilder.DropTable(
                 name: "models");

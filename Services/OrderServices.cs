@@ -1,5 +1,4 @@
 ﻿using DTO;
-using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +25,7 @@ namespace Services
                 order.CustomerName = orderDTO.CustomerName;
                 order.CustomerNationality = orderDTO.CustomerNationality;
                 //Stock stock = await unitOfWorkRepository.Stock.GetById(order.StockID);
-                order.CarID = orderDTO.CarId;
+                //order.carID = orderDTO.CarId;
                 order.DrivingLicense = orderDTO.DrivingLicense;
                 order.TransactionDate = orderDTO.TransactionDate;
                 //order.RentFrom = orderDTO.RentFrom;
