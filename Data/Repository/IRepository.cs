@@ -14,7 +14,7 @@ namespace WebApplication1.Data.Repository
         IQueryable<T> GetAll(string property);
         IQueryable<T> GetAll(string property1, string property2);
 
-        void create(T t);
+        T create(T t);
 
 
 

@@ -45,10 +45,11 @@ public class Repository<T> : IRepository<T> where T : Base
     //    return _context.Set<T>().Where(expression);
     //}
 
-    public void create(T t)
+    public T create(T t)
     {
         _context.Set<T>().Add(t);
         _context.SaveChanges();
+        return t;
     }
 
    

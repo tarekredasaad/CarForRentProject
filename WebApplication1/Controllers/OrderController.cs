@@ -19,7 +19,14 @@ namespace WebApplication1.Controllers
         [HttpPost("AddOrder")]
         public async Task<IActionResult> AddOrder(OrderDTO orderDTO)
         {
-           return Ok(orderDTO);
+           return Ok(orderServices.AddOrder(orderDTO));
+        }
+
+        [HttpPost("addOrderCars")]
+        public async Task<ActionResult> AddOrderCars(OrderCarsDTO carsDTOs)
+        {
+            // Handle carsDTOs
+            return Ok(orderServices.AddCars(carsDTOs));
         }
     }
 }

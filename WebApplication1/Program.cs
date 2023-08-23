@@ -34,6 +34,7 @@ builder.Services.AddDbContext<Context>(options =>
 builder.Services.AddScoped<IRepository<Car>, Repository<Car>>();
 builder.Services.AddScoped<IRepository<Model>, Repository<Model>>();
 builder.Services.AddScoped<IRepository<Order>, Repository<Order>>();
+builder.Services.AddScoped<IRepository<OrderCar>, Repository<OrderCar>>();
 builder.Services.AddScoped<CarServices>();
 builder.Services.AddScoped<OrderServices>();
 
